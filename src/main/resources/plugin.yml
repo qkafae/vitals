@@ -1,0 +1,7 @@
+name: Vitals
+version: '1.0'
+main: me.kafae.vitals.Main
+api-version: '1.21'
+load: STARTUP
+authors: [ kafae ]
+description: vitals frfr
