@@ -14,7 +14,7 @@ class DataStore {
     data class PlayerData(
         var primary: String = "",
         var passive: String = "",
-        var primaryCD: Int = 0
+        var regen: Double = 1.0
     )
 
     fun isThere(uid: String): Boolean {

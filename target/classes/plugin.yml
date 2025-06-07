@@ -1,7 +1,15 @@
-name: vitals
+name: Vitals
 version: '1.0'
 main: me.kafae.vitals.Main
 api-version: '1.21'
 load: STARTUP
 authors: [ kafae ]
 description: vitals frfr
+
+commands:
+  brew:
+    description: Opens the brew interface
+    usage: /brew
+  item:
+    description: Give the user any custom item
+    usage: /item [item] <count>
