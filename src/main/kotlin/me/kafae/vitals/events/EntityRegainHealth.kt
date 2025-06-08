@@ -14,7 +14,7 @@ class EntityRegainHealth: Listener {
         if (e.entity !is Player) {
             return
         }
-        e.amount *= Main.dataMap[(e.entity as Player).uniqueId.toString()]!!.regen
+        e.amount *= Main.dataMap[(e.entity as Player).uniqueId.toString()]!!.regen + Main.dataMap[(e.entity as Player).uniqueId.toString()]!!.bonus
     }
 
 }

@@ -1,6 +1,8 @@
 package me.kafae.vitals.events
 
 import me.kafae.vitals.Main
+import me.kafae.vitals.bin.toFixed
+import me.kafae.vitals.bin.update
 import me.kafae.vitals.datastore.DataStore
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -18,6 +20,8 @@ class PlayerJoin: Listener {
         val uid: String = p.uniqueId.toString()
         Main.dataMap[uid] = ds.load(uid)
         Main.log.info("Loaded data for ${p.name}")
+        Main.dataMap[uid]!!.bonus = 0.0.toFixed(1)
+        update(e.player)
     }
 
 }

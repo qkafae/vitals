@@ -1,5 +1,6 @@
 package me.kafae.vitals.events
 
+import me.kafae.vitals.bin.isCustom
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
@@ -15,9 +16,11 @@ class PlayerConsume: Listener {
     private fun onPlayerConsume(e: PlayerItemConsumeEvent) {
         val p: Player = e.player
         val i: ItemStack = e.item
-        val im: ItemMeta = i.itemMeta ?: Bukkit.getItemFactory().getItemMeta(i.type)!!
 
-        e.isCancelled = true
+        if (i.isCustom()) {
+
+            e.isCancelled = true
+        }
     }
 
 }

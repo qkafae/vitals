@@ -14,7 +14,10 @@ class DataStore {
     data class PlayerData(
         var primary: String = "",
         var passive: String = "",
-        var regen: Double = 1.0
+        var regen: Double = 1.0,
+        var bonus: Double = 0.0,
+        var hp: Double = 0.0,
+        var cd: Int = 0
     )
 
     fun isThere(uid: String): Boolean {
@@ -53,6 +56,12 @@ class DataStore {
         val f = dir.resolve("${uid}.json").toFile()
         f.writeText(gson.toJson(Main.dataMap[uid]))
         Main.dataMap.remove(uid)
+        return true
+    }
+
+    fun incrementalSave(uid: String): Boolean {
+        val f = dir.resolve("${uid}.json").toFile()
+        f.writeText(gson.toJson(Main.dataMap[uid]))
         return true
     }
 
