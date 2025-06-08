@@ -1,6 +1,7 @@
 package me.kafae.vitals.events
 
 import me.kafae.vitals.Main
+import me.kafae.vitals.bin.correspondingBrew
 import me.kafae.vitals.bin.toFixed
 import me.kafae.vitals.items.LifeElixir
 import org.bukkit.Bukkit
@@ -18,6 +19,13 @@ class PlayerDeath: Listener {
         val atk: Player? = vic.killer
         var vamt: Double = 0.0
         var aamt: Double = 0.0
+
+        if (Main.dataMap[vic.uniqueId.toString()]!!.primary != "none") {
+            e.drops.add(correspondingBrew[Main.dataMap[vic.uniqueId.toString()]!!.primary]!!.get(1))
+        }
+        if (Main.dataMap[vic.uniqueId.toString()]!!.passive != "none") {
+            e.drops.add(correspondingBrew[Main.dataMap[vic.uniqueId.toString()]!!.passive]!!.get(1))
+        }
 
         if (Main.dataMap[vic.uniqueId.toString()]!!.regen > 0.5) {
             if (atk != null) {

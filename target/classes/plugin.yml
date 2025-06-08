@@ -13,3 +13,6 @@ commands:
   item:
     description: Give the user any custom item
     usage: /item [item] <count>
+  ability:
+    description: Use brew abilility
+    usage: /ability

@@ -10,8 +10,8 @@ interface Brew {
     var name: String
     val customModel: NamespacedKey
     val lore: List<String>
-    fun get(): ItemStack
-    fun give(p: Player)
+    fun get(n: Int): ItemStack
+    fun give(p: Player, n: Int)
 
 
 }

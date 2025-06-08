@@ -12,8 +12,8 @@ class DataStore {
     val dir: Path = Path.of("plugins/Vitals/data")
 
     data class PlayerData(
-        var primary: String = "",
-        var passive: String = "",
+        var primary: String = "none",
+        var passive: String = "none",
         var regen: Double = 1.0,
         var bonus: Double = 0.0,
         var hp: Double = 0.0,

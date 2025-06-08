@@ -1,6 +1,8 @@
 package me.kafae.vitals.ui
 
 import me.kafae.vitals.bin.Gui
+import me.kafae.vitals.brews.passive.RavenousBrew
+import me.kafae.vitals.brews.primary.RageBrew
 import me.kafae.vitals.icons.BackgroundIcon
 import me.kafae.vitals.icons.BrewIcon
 import me.kafae.vitals.icons.PrimaryBrewIcon
@@ -31,7 +33,9 @@ class BrewLibraryUI(val p: Player?): Gui(), Listener {
 
             this[36] = BrewIcon().get()
             this[10] = PrimaryBrewIcon().get()
+            this[11] = RageBrew(false).get(1)
             this[19] = PassiveBrewIcon().get()
+            this[20] = RavenousBrew(false).get(1)
             this[28] = SpecialBrewIcon().get()
         }
     }

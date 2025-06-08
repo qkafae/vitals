@@ -8,29 +8,33 @@ import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 
-abstract class PrimaryBrew : ItemIndentifier, Brew {
+abstract class PrimaryBrew(
+    val isFirst: Boolean = false
+) : ItemIndentifier, Brew {
 
     abstract override val id: String
     abstract override var name: String
     abstract override val customModel: NamespacedKey
-    abstract val isFirst: Boolean
     abstract val cost: Double
     override val lore: List<String> = listOf()
 
-    override fun get(): ItemStack {
+    override fun get(n: Int): ItemStack {
         val i: ItemStack = ItemStack(Material.POTION)
         val im: ItemMeta = Bukkit.getItemFactory().getItemMeta(i.type)!!
 
-        var lr: MutableList<String> = mutableListOf("--------------------", "", "", "id: $id")
+        var lr: MutableList<String> = if (isFirst) {
+            mutableListOf("--------------------", "", "", "id: first_$id")
+        } else {
+            mutableListOf("--------------------", "", "", "id: $id")
+        }
         lr.addAll(2, lore)
         lr = lr.map { "§7$it" } as MutableList<String>
-        name = "§a✊ $name"
 
         im.apply {
             if (isFirst) {
-                setItemName("§6✪ $name")
+                setDisplayName("§6✪ §a✊ $name")
             } else {
-                setItemName(name)
+                setDisplayName("§a✊ $name")
             }
             itemModel = customModel
             lore = lr
@@ -42,8 +46,8 @@ abstract class PrimaryBrew : ItemIndentifier, Brew {
         return i
     }
 
-    override fun give(p: Player) {
-        p.inventory.addItem(get())
+    override fun give(p: Player, n: Int) {
+        p.inventory.addItem(get(n))
     }
 
     open fun activate(p: Player) {

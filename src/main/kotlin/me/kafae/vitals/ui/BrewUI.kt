@@ -2,6 +2,7 @@ package me.kafae.vitals.ui
 
 import me.kafae.vitals.Main
 import me.kafae.vitals.bin.Gui
+import me.kafae.vitals.bin.correspondingBrew
 import me.kafae.vitals.icons.BackgroundIcon
 import me.kafae.vitals.icons.BrewLibraryIcon
 import me.kafae.vitals.icons.PrimaryBrewIcon
@@ -32,11 +33,11 @@ class BrewUI(val p: Player?): Gui(), Listener {
             this[35] = BrewLibraryIcon().get()
             this[21] = PrimaryBrewIcon().get()
             this[23] = PassiveBrewIcon().get()
-            if (Main.dataMap[p.uniqueId.toString()]!!.primary != "") {
-                this[12] = ItemStack(Material.BARRIER)
+            if (Main.dataMap[p.uniqueId.toString()]!!.primary != "none") {
+                this[12] = correspondingBrew[Main.dataMap[p.uniqueId.toString()]!!.primary]!!.get(1)
             }
-            if (Main.dataMap[p.uniqueId.toString()]!!.primary != "") {
-                this[14] = ItemStack(Material.BARRIER)
+            if (Main.dataMap[p.uniqueId.toString()]!!.passive != "none") {
+                this[14] = correspondingBrew[Main.dataMap[p.uniqueId.toString()]!!.passive]!!.get(1)
             }
         }
     }
